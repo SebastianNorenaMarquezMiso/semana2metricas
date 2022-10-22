@@ -1,0 +1,1116 @@
+{
+	"info": {
+		"_postman_id": "7fb042c1-b699-40d7-a5f4-ead80e751577",
+		"name": "Prueba práctica APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17876585"
+	},
+	"item": [
+		{
+			"name": "Club",
+			"item": [
+				{
+					"name": "Valid",
+					"item": [
+						{
+							"name": "Create Club",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function() {",
+											"    pm.response.to.have.status(201);",
+											"    ",
+											"    var jsonData = pm.response.json();",
+											"    pm.collectionVariables.set(\"Club_id\", jsonData.id);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"name\": \"Club Manizales\",\n   \"foundationDate\": \"2022-09-10T11:09:41+00:00\",\n   \"description\": \"Club Manizales\" ,\n   \"photo\":\"https://www.clubmanizales.co/wp-content/uploads/2021/08/logo-blanco-2-05.png\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/clubs",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"clubs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all clubs",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function() {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/clubs",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"clubs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Club",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function() {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/clubs/{{Club_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"clubs",
+										"{{Club_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Club",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function() {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"name\": \"Club Pereira\",\n   \"foundationDate\": \"2022-09-10T11:09:41+00:00\",\n   \"description\": \"Club Pereira\" ,\n   \"photo\":\"https://www.clubmanizales.co/wp-content/uploads/2021/08/logo-blanco-2-05.png\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/clubs/{{Club_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"clubs",
+										"{{Club_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Club",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function() {",
+											"    pm.response.to.have.status(204);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/clubs/{{Club_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"clubs",
+										"{{Club_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Invalid",
+					"item": [
+						{
+							"name": "Create Club",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function() {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"name\": \"Club Manizales\",\n   \"foundationDate\": \"2022-09-10T11:09:41+00:00\",\n   \"description\": \"https://www.clubmanizales.co/wp-content/uploads/2021/08/logo-blanco-2-05.pnghttps://www.clubmanizales.co/wp-content/uploads/2021/08/logo-blanco-2-05.pnghttps://www.clubmanizales.co/wp-content/uploads/2021/08/logo-blanco-2-05.pnghttps://www.clubmanizales.co/wp-content/uploads/2021/08/logo-blanco-2-05.pnghttps://www.clubmanizales.co/wp-content/uploads/2021/08/logo-blanco-2-05.pnghttps://www.clubmanizales.co/wp-content/uploads/2021/08/logo-blanco-2-05.pnghttps://www.clubmanizales.co/wp-content/uploads/2021/08/logo-blanco-2-05.pnghttps://www.clubmanizales.co/wp-content/uploads/2021/08/logo-blanco-2-05.png\" ,\n   \"photo\":\"https://www.clubmanizales.co/wp-content/uploads/2021/08/logo-blanco-2-05.png\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/clubs",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"clubs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Club",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function() {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/clubs/df0c7f00-1ace-45fc-9cbf-eb8d97e022c4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"clubs",
+										"df0c7f00-1ace-45fc-9cbf-eb8d97e022c4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Club",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function() {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"name\": \"Club Manizales\",\n   \"foundationDate\": \"2022-09-10T11:09:41+00:00\",\n   \"description\": \"https://www.clubmanizales.co/wp-content/uploads/2021/08/logo-blanco-2-05.pnghttps://www.clubmanizales.co/wp-content/uploads/2021/08/logo-blanco-2-05.pnghttps://www.clubmanizales.co/wp-content/uploads/2021/08/logo-blanco-2-05.pnghttps://www.clubmanizales.co/wp-content/uploads/2021/08/logo-blanco-2-05.pnghttps://www.clubmanizales.co/wp-content/uploads/2021/08/logo-blanco-2-05/08/logo-blanco-2-05.://www.clubmanizales.co/wp-content/uploads/2021/08/logo-blanco-2-05./www.clubmanizales.co/wp-content/uploads/2021/08/logo-blanco-2-05.ptps://www.clubmanizales.co/wp-content/uploads/2021/08/logo-blanco-2-05.pn/www.clubmanizales.co/wp-content/uploads/2021/08/logo-blanco-2-05.pnclubmanizales.co/wp-content/uploads/2021/08/logo-blanco-2-05.png\" ,\n   \"photo\":\"https://www.clubmanizales.co/wp-content/uploads/2021/08/logo-blanco-2-05.png\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/clubs/{{Club_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"clubs",
+										"{{Club_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Club",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function() {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/clubs/df0c7f00-1ace-45fc-9cbf-eb8d97e022c4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"clubs",
+										"df0c7f00-1ace-45fc-9cbf-eb8d97e022c4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "member",
+			"item": [
+				{
+					"name": "Valid",
+					"item": [
+						{
+							"name": "Create member",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function() {",
+											"    pm.response.to.have.status(201);",
+											"    ",
+											"    var jsonData = pm.response.json();",
+											"    pm.collectionVariables.set(\"member_id\", jsonData.id);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"name\": \"Sebastián Noreña Márquez\",\n   \"email\": \"sebastian.norena.marquez@gmail.com\",\n   \"dateOfBirth\": \"2022-09-10T11:09:41+00:00\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/members",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"members"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all members",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function() {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/members",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"members"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get member",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function() {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/members/{{member_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"members",
+										"{{member_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update member",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function() {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"name\": \"Santiago Noreña Márquez\",\n   \"email\": \"sebastian.norena.marquez@gmail.com\",\n   \"dateOfBirth\": \"2022-09-10T11:09:41+00:00\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/members/{{member_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"members",
+										"{{member_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete member",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function() {",
+											"    pm.response.to.have.status(204);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/members/{{member_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"members",
+										"{{member_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Invalid",
+					"item": [
+						{
+							"name": "Create member",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function() {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"name\": \"Felipe\",\n   \"email\": \"sebastian.norena.marquezgmail.com\",\n   \"dateOfBirth\": \"2022-09-10T11:09:41+00:00\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/members",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"members"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get member",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function() {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/members/ada34549-add8-49f2-95fc-ab7e5f2cefo9",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"members",
+										"ada34549-add8-49f2-95fc-ab7e5f2cefo9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update member",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function() {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"name\": \"Felipe\",\n   \"email\": \"sebastian.norena.marquezgmail.com\",\n   \"dateOfBirth\": \"2022-09-10T11:09:41+00:00\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/members/{{member_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"members",
+										"{{member_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete member",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function() {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/members/df0c7xx00-1ace-45fc-9cbf-eb8d97e022c4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"members",
+										"df0c7xx00-1ace-45fc-9cbf-eb8d97e022c4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Club-member",
+			"item": [
+				{
+					"name": "Valid",
+					"item": [
+						{
+							"name": "Create Club-member",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function() {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/clubs/{{Club_id}}/members/{{member_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"clubs",
+										"{{Club_id}}",
+										"members",
+										"{{member_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all members-members",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function() {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/clubs/{{Club_id}}/members",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"clubs",
+										"{{Club_id}}",
+										"members"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Club-member",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function() {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/clubs/{{Club_id}}/members/{{member_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"clubs",
+										"{{Club_id}}",
+										"members",
+										"{{member_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Club-member",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function() {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n    {\n        \"id\": \"4cd98fda-f84a-447d-ac3e-7eb009ec1484\"\n    }\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/clubs/{{Club_id}}/members",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"clubs",
+										"{{Club_id}}",
+										"members"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Club-member",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function() {",
+											"    pm.response.to.have.status(204);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/clubs/{{Club_id}}/members/{{member_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"clubs",
+										"{{Club_id}}",
+										"members",
+										"{{member_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Invalid",
+					"item": [
+						{
+							"name": "Create Club-member Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function() {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/clubs/{{Club_id}}/members/df0c7f00-1ace-45fc-9cbf-eb8d97e022c4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"clubs",
+										"{{Club_id}}",
+										"members",
+										"df0c7f00-1ace-45fc-9cbf-eb8d97e022c4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Club-member Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function() {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/clubs/{{Club_id}}/members/df0c7f00-1ace-45fc-9cbf-eb8d97e022c4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"clubs",
+										"{{Club_id}}",
+										"members",
+										"df0c7f00-1ace-45fc-9cbf-eb8d97e022c4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Club-member Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function() {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n    {\n        \"id\": \"df0c7f00-1ace-45fc-9cbf-eb8d97e022c4\"\n    }\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/clubs/df0c7f00-1ace-45fc-9cbf-eb8dd97e022c4/members",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"clubs",
+										"df0c7f00-1ace-45fc-9cbf-eb8dd97e022c4",
+										"members"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Club-member Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function() {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/clubs/{{Club_id}}/members/df0c7f00-1ace-45fc-9cbf-eb8d97e022c4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"clubs",
+										"{{Club_id}}",
+										"members",
+										"df0c7f00-1ace-45fc-9cbf-eb8d97e022c4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "Club_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "member_id\n",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "member_id",
+			"value": ""
+		}
+	]
+}
