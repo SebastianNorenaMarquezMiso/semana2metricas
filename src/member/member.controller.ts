@@ -42,6 +42,7 @@ export class MemberController {
     @Param('memberId') MemberId: string,
     @Body() memberDTO: MemberDTO,
   ) {
+      debugger;
     const member: Member = plainToInstance(Member, memberDTO);
     return await this.memberService.update(MemberId, member);
   }
