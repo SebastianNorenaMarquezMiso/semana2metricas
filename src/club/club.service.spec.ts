@@ -100,6 +100,7 @@ describe('ClubService', () => {
       name: 'New name',
       foundationDate: faker.date.future(),
     };
+    club.description ="sadasdasdasdasdasdasdasdasdasjdgasjfgsdfgsdhjgfsjhadgfjsdahgfjsadgfjshdgafjsahgdfjsagdfjhasgfdjasfhgasjdhfgsjahdgfjsahdfgsjadhfgsajhdfgajsdhgfjsahgdfjsahdgfjhasgdfjhsgdafjhgsadjfhsagjfhgjhsagfjhgsajhdfgasjdhfgjsahdfjsad";
     await expect(() => service.update(club.id, club)).rejects.toHaveProperty(
       'message',
       'The description cannot exceed 100 characters',
