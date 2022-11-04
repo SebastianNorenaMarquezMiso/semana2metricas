@@ -50,6 +50,7 @@ export class ClubService {
   }
 
   async update(id: string, clubDTO: ClubDTO): Promise<ClubDTO> {
+     console.log(clubDTO.description.length);
     if (clubDTO.description.length > 100) {
       throw new BusinessLogicException(
         'The description cannot exceed 100 characters',
